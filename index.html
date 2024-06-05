@@ -1,33 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Momentum App</title>
-</head>
-<body>
-    <div class="every_body">
-        <form id="login-form" class="hidden">
-            <div>Hello! What's your name?</div>
-            <input required maxlength="15" type="text">
-            <button>Log In</button>
-        </form>
-        <h2 id="clock">00:00:00</h2>
-        <h1 id="greeting" class="hidden"></h1>
-        <form id="todo-form">
-            <input type="text" placeholder="Write a To Do and Press Enter" required>
-        </form>
-        <ul id="todo-list"></ul>
-        <div id="quote">
-            <span></span>
-            <span></span>
-        </div>
+<html>
+  <head>
+    <title>Nemgu chrome app</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <canvas class="bgsnow bgweather"></canvas>
+    <canvas class="bgrain bgweather"></canvas>
+    <canvas class="bgcloud bgweather"></canvas>
+    <canvas class="bgfire bgweather"></canvas>
+
+    <span class="js-temp"></span>
+    <span class="js-place"></span>
+
+    <div id="quote">
+      <span></span>
+      <span></span>
     </div>
-    <img class="img" src="img/배경화면1.png">
-    <script src="js/greetings.js"></script>
+
+    <div class="btns">
+      <button class="btn1 bgbtn" type="button">☔</button>
+      <button class="btn2 bgbtn" type="button">☁️</button>
+      <button class="btn3 bgbtn" type="button">❄️</button>
+    </div>
+
+    <div id="time">
+      <div class="circle" style="--clr: #ff2972">
+        <div class="dots hr_dot"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="hh"></circle>
+        </svg>
+        <div id="hours">00</div>
+      </div>
+      <div class="circle" style="--clr: #fee800">
+        <div class="dots min_dot"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="mm"></circle>
+        </svg>
+        <div id="minutes">00</div>
+      </div>
+      <div class="circle" style="--clr: #04fc43">
+        <div class="dots sec_dot"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="ss"></circle>
+        </svg>
+        <div id="seconds">00</div>
+      </div>
+      <div class="ap">
+        <div id="ampm">AM</div>
+      </div>
+    </div>
+
+    <h4 class="js-greetings greetings"></h4>
+
+    <form class="js-form form">
+      <input type="text" placeholder="What is your name?" />
+    </form>
+
+    <h5>Write down things to do today</h5>
+
+    <form class="js-toDoForm">
+      <input id="todo" type="text" placeholder="" />
+    </form>
+
+    <ul class="js-toDoList"></ul>
+
     <script src="js/clock.js"></script>
-    <script src="js/quotes.js"></script>
+    <script src="js/greeting.js"></script>
     <script src="js/todo.js"></script>
-</body>
+    <script src="js/background.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/quotes.js"></script>
+    <script src="js/button.js"></script>
+    <script type="module" src="js/bgsnow.js"></script>
+    <script type="module" src="js/bgrain.js"></script>
+    <script type="module" src="js/bgcloud.js"></script>
+  </body>
 </html>

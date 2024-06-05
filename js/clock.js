@@ -1,13 +1,40 @@
-const clock = document.querySelector("h2#clock");
+setInterval(() => {
+  let hours = document.getElementById("hours");
+  let minutes = document.getElementById("minutes");
+  let seconds = document.getElementById("seconds");
+  let ampm = document.getElementById("ampm");
 
-function getClock() {
-    const date = new Date();
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
+  let hh = document.getElementById("hh");
+  let mm = document.getElementById("mm");
+  let ss = document.getElementById("ss");
 
-    clock.innerText = `${hours}:${minutes}:${seconds}`;
-}
+  let hr_dot = document.querySelector(".hr_dot");
+  let min_dot = document.querySelector(".min_dot");
+  let sec_dot = document.querySelector(".sec_dot");
 
-getClock(); // website가 load되자마자 getClock()을 실행
-setInterval(getClock, 1000); // getClock()을 실행하고, 1초 후 바로 실행
+  let h = new Date().getHours();
+  let m = new Date().getMinutes();
+  let s = new Date().getSeconds();
+  let am = h >= 12 ? "PM" : "AM";
+
+  if (h > 12) {
+    h = h - 12;
+  }
+
+  h = h < 10 ? "0" + h : h;
+  m = m < 10 ? "0" + m : m;
+  s = s < 10 ? "0" + s : s;
+
+  hours.innerHTML = h + "<br><span>Hours</span>";
+  minutes.innerHTML = m + "<br><span>Minutes</span>";
+  seconds.innerHTML = s + "<br><span>Seconds</span>";
+  ampm.innerHTML = am;
+
+  hh.style.strokeDashoffset = 440 - (440 * h) / 12;
+  mm.style.strokeDashoffset = 440 - (440 * m) / 60;
+  ss.style.strokeDashoffset = 440 - (440 * s) / 60;
+
+  hr_dot.style.transform = `rotate(${h * 30}deg)`;
+  min_dot.style.transform = `rotate(${m * 6}deg)`;
+  sec_dot.style.transform = `rotate(${s * 6}deg)`;
+});
